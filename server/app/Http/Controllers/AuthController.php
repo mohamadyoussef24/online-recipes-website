@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
-class AuthController extends Controller
-{
+class AuthController extends Controller{
 
     public function __construct()
     {
@@ -31,13 +30,16 @@ class AuthController extends Controller
         }
 
         $user = Auth::user();
+        $user->token = $token;  //badal li tahet
+        // $user->role = $user->user_type_id == 1? "Admin" : "User";
+
         return response()->json([
                 'status' => 'success',
                 'user' => $user,
-                'authorisation' => [
-                    'token' => $token,
-                    'type' => 'bearer',
-                ]
+                // 'authorisation' => [
+                //     'token' => $token,
+                //     'type' => 'bearer',
+                // ]
             ]);
 
     }
@@ -49,11 +51,18 @@ class AuthController extends Controller
             'password' => 'required|string|min:6',
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        $user= new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+
+        // $user = User::create([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'password' => Hash::make($request->password),
+        // ]);
 
         $token = Auth::login($user);
         return response()->json([

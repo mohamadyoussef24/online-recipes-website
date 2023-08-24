@@ -1,0 +1,20 @@
+*, *::before, *::after{
+    margin: 10;
+    box-sizing: border-box;
+  }
+  
+  html, body{
+    height: 100vh;
+    
+  }
+
+.tagilo{
+ 
+  display: flex;
+  justify-content: center;
+  width: 300px;
+  border-radius: 10px;
+  background-color: #e0922d;
+  position: relative;
+  left: 40%;
+}

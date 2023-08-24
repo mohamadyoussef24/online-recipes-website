@@ -11,7 +11,7 @@
     padding: 40px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #499593;
+    background-color: #49959291;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,7 +28,7 @@
   .login-form button {
     width: 100%;
     padding: 10px;
-    background-color:#e0922d;
+    background-color:#e0922da4;
     color: #fff;
     border: none;
     border-radius: 5px;
